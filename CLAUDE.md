@@ -33,7 +33,13 @@ Não inventar números, estatísticas ou depoimentos. Dado que não existe vira 
 
 ## Estrutura
 
-- `index.html`: página única (topo, faixa de clientes, apresentação animada, serviços, carrossel de projetos, contato)
+- `index.html`: página única (topo, faixa de clientes, apresentação animada, serviços, calculadora de comissão, carrossel de projetos, como funciona, quem faz a Kafé, depoimento escondido com `hidden`, outros negócios, dúvidas, contato, botão fixo do WhatsApp)
 - `css/styles.css`: estilos, tokens no topo
-- `js/main.js`: apresentação estilo stories (`[data-story]`) e carrossel (`[data-carousel]`); barras e bolinhas são geradas pelo JS a partir dos `<article>` no HTML
+- `js/main.js`: apresentação estilo stories (`[data-story]`) e carrossel (`[data-carousel]`); barras e bolinhas são geradas pelo JS a partir dos `<article>` no HTML. Também monta os links do WhatsApp (`data-wa` = mensagem pronta, número em `WA_NUMBER`), a calculadora (`[data-calc]`) e o botão fixo (`[data-wa-float]`, some sobre os elementos com `data-wa-hide`)
+
+## Posicionamento e oferta
+
+- Foco em restaurante no topo e na maior parte da página. Outros negócios (clínicas, oficinas, imobiliárias) ficam numa seção própria mais abaixo.
+- Preço público: landing page a partir de R$ 500. Delivery e sistema de caixa: orçamento na conversa.
+- Seção "Quem faz a Kafé": empresas citadas vêm do currículo do Kaique (projetos via consultorias). Não acrescentar empresas sem confirmação.
 - Acessibilidade: manter botões reais, `aria-label` em botões só com ícone, alvos de toque de 44px e respeito a `prefers-reduced-motion`

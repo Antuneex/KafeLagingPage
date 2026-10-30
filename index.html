@@ -23,6 +23,10 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <!--
+    Links do WhatsApp: o href leva só o número (funciona sem JS).
+    O texto em data-wa vira a mensagem pronta, montada pelo js/main.js.
+  -->
 
   <!-- ===================== TOPO ===================== -->
   <div class="dark">
@@ -33,20 +37,19 @@
       <nav class="nav" aria-label="Principal">
         <a href="#servicos">Serviços</a>
         <a href="#projetos">Projetos</a>
-        <a href="#por-que">Por que ter</a>
-        <a href="#contato" class="btn btn--accent btn--sm">Quero meu site</a>
+        <a href="#duvidas">Dúvidas</a>
+        <a href="https://wa.me/5514981861140" data-wa="Oi Kaique, vi o site da Kafé e quero um site para o meu negócio." class="btn btn--accent btn--sm" target="_blank" rel="noopener">Quero meu site</a>
       </nav>
     </header>
 
-    <section id="inicio" class="container hero">
+    <section id="inicio" class="container hero" data-wa-hide>
       <div class="hero__text">
         <span class="eyebrow eyebrow--accent">Tecnologia para restaurantes</span>
         <h1 class="hero__title">Seu restaurante vendendo direto, sem comissão.</h1>
         <p class="hero__lead">Site próprio, cardápio digital com pedido pelo WhatsApp e um sistema de caixa que conversa com tudo isso. Feito por quem desenvolve software para grandes redes de food service.</p>
         <div class="hero__actions">
-          <!-- TODO: trocar pelo seu número com DDI e DDD, ex.: 5514999999999 -->
-          <a href="https://wa.me/55XXXXXXXXXXX" class="btn btn--accent" target="_blank" rel="noopener">Falar no WhatsApp</a>
-          <a href="#projetos" class="btn btn--ghost">Ver projetos</a>
+          <a href="https://wa.me/5514981861140" data-wa="Oi Kaique, vi o site da Kafé e quero saber como vender direto, sem comissão." class="btn btn--accent" target="_blank" rel="noopener">Falar no WhatsApp</a>
+          <a href="#calculadora" class="btn btn--ghost">Quanto pago de comissão?</a>
         </div>
       </div>
 
@@ -60,10 +63,10 @@
         <div class="phone">
           <div class="phone__screen">
             <span class="phone__label">Cardápio</span>
-            <span class="phone__name">[Seu restaurante]</span>
+            <span class="phone__name">Burger da Esquina</span>
             <div class="phone__img"></div>
-            <div class="phone__row"><strong>[Prato 1]</strong><span>[preço]</span></div>
-            <div class="phone__row"><strong>[Prato 2]</strong><span>[preço]</span></div>
+            <div class="phone__row"><strong>Smash duplo</strong><span>R$ 34,90</span></div>
+            <div class="phone__row"><strong>Batata rústica</strong><span>R$ 18,00</span></div>
             <div class="phone__cta">Pedir no WhatsApp</div>
           </div>
         </div>
@@ -189,17 +192,52 @@
           <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
           <h3>Site e landing page</h3>
           <p>Uma página rápida, bonita no celular e fácil de achar no Google, com cardápio, horários, endereço e botão de reserva.</p>
+          <p class="card__price">A partir de R$ 500</p>
+          <a href="https://wa.me/5514981861140" data-wa="Oi Kaique, vi o site da Kafé e quero um site para o meu restaurante." class="card__link" target="_blank" rel="noopener">Quero um site →</a>
         </article>
         <article class="card">
           <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div>
           <h3>Cardápio e delivery próprio</h3>
           <p>O cliente escolhe no cardápio digital e o pedido chega pronto no WhatsApp ou no painel. Sem taxa de aplicativo por pedido.</p>
+          <a href="https://wa.me/5514981861140" data-wa="Oi Kaique, vi o site da Kafé e quero um delivery próprio, sem comissão." class="card__link" target="_blank" rel="noopener">Quero delivery próprio →</a>
         </article>
         <article class="card">
           <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 8h6M9 12h6"/></svg></div>
           <h3>Caixa, comandas e estoque</h3>
           <p>Sistema de caixa para mesas, balcão e delivery, com app de comandas para o garçom e estoque que baixa a cada venda.</p>
+          <a href="https://wa.me/5514981861140" data-wa="Oi Kaique, vi o site da Kafé e quero saber do sistema de caixa." class="card__link" target="_blank" rel="noopener">Quero organizar o caixa →</a>
         </article>
+      </div>
+    </section>
+
+    <!-- ===================== CALCULADORA DE COMISSÃO ===================== -->
+    <section id="calculadora" class="container section section--flush-top">
+      <div class="section__head">
+        <span class="eyebrow">Faça a conta</span>
+        <h2>Quanto o aplicativo leva do seu restaurante?</h2>
+        <p class="section__lead">Coloque os seus números. A conta fica só na sua tela.</p>
+      </div>
+      <div class="calc" data-calc>
+        <div class="calc__form">
+          <div class="field">
+            <label for="calc-sales">Quanto você vende por mês no aplicativo</label>
+            <div class="field__input"><span aria-hidden="true">R$</span><input id="calc-sales" type="text" inputmode="decimal" autocomplete="off" placeholder="20.000" data-calc-sales></div>
+          </div>
+          <div class="field">
+            <label for="calc-rate">Comissão que você paga</label>
+            <div class="field__input"><input id="calc-rate" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="calc-rate-hint" data-calc-rate><span aria-hidden="true">%</span></div>
+            <span class="field__hint" id="calc-rate-hint">Está no extrato ou no contrato do aplicativo.</span>
+          </div>
+        </div>
+        <div class="calc__result">
+          <div class="calc__numbers" aria-live="polite">
+            <span class="calc__label">Vai para o aplicativo por mês</span>
+            <span class="calc__big" data-calc-month>R$ —</span>
+            <p class="calc__year">Em um ano: <strong data-calc-year>R$ —</strong></p>
+          </div>
+          <p class="calc__note">No pedido direto pelo seu site, não tem comissão por pedido.</p>
+          <a href="https://wa.me/5514981861140" data-wa="Oi Kaique, vi a calculadora no site da Kafé e quero saber como vender sem comissão." data-calc-cta class="btn btn--accent" target="_blank" rel="noopener">Quero vender sem comissão</a>
+        </div>
       </div>
     </section>
 
@@ -250,14 +288,150 @@
       </section>
     </div>
 
+    <!-- ===================== COMO FUNCIONA ===================== -->
+    <section id="como-funciona" class="container section">
+      <div class="section__head">
+        <span class="eyebrow">Como funciona</span>
+        <h2>Simples do começo ao fim.</h2>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step__num" aria-hidden="true">1</span>
+          <h3>A gente conversa</h3>
+          <p>Pelo WhatsApp ou pessoalmente. Você conta como funciona o seu restaurante e o que está atrapalhando.</p>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">2</span>
+          <h3>A Kafé monta</h3>
+          <p>Eu preparo o site, o cardápio ou o sistema e te mostro tudo antes de colocar no ar.</p>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">3</span>
+          <h3>Você vende</h3>
+          <p>Seu restaurante passa a receber pedidos direto. Precisou ajustar algo, é só chamar.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===================== QUEM FAZ A KAFÉ ===================== -->
+    <section id="sobre" class="container section section--flush-top">
+      <div class="about">
+        <div class="about__photo">
+          <img src="assets/img/kaique.jpg" alt="Kaique Antunes, fundador da Kafé, sorrindo em frente ao computador" width="640" height="800" loading="lazy">
+        </div>
+        <div class="about__text">
+          <span class="eyebrow">Quem faz a Kafé</span>
+          <h2>Prazer, Kaique. Quem atende você sou eu.</h2>
+          <p>Sou de Ourinhos e há mais de 7 anos desenvolvo sistemas para grandes empresas do país. No food service, trabalhei no site da Starbucks Brasil e no aplicativo e no sistema interno do Burger King.</p>
+          <p>Antes de programar, passei 9 anos no suporte de TI, ajudando quem usa o sistema no dia a dia. É isso que eu trago para o seu restaurante: tecnologia de grande rede, com atendimento de vizinho.</p>
+          <div class="brands">
+            <span class="brands__label">Já desenvolvi sistemas para</span>
+            <ul>
+              <li>Starbucks</li><li>Burger King</li><li>Itaú</li><li>Bradesco</li><li>Banco do Brasil</li><li>Carrefour</li><li>Yamaha</li>
+            </ul>
+            <span class="brands__note">Projetos em que atuei como desenvolvedor, pelas consultorias em que trabalhei.</span>
+          </div>
+          <div class="about__actions">
+            <a href="https://wa.me/5514981861140" data-wa="Oi Kaique, vi o site da Kafé e queria conversar com você." class="btn btn--accent" target="_blank" rel="noopener">Falar com o Kaique</a>
+            <a href="https://www.linkedin.com/in/kaiquejunioantunes/" class="btn btn--outline" target="_blank" rel="noopener">Ver meu LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DEPOIMENTO =====================
+         Escondido até ter um depoimento real. Para mostrar: tirar o atributo hidden
+         e trocar os textos entre colchetes. -->
+    <section id="depoimento" class="container section section--flush-top" hidden>
+      <figure class="quote">
+        <blockquote>“[Depoimento real do cliente, nas palavras dele.]”</blockquote>
+        <figcaption>
+          <span class="avatar"><img src="assets/img/clientes/recanto.png" alt="" width="64" height="64"></span>
+          <span><strong>[Nome do cliente]</strong>[Cargo] · [Restaurante], [Cidade]</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ===================== OUTROS NEGÓCIOS ===================== -->
+    <div class="dark">
+      <section id="outros-negocios" class="container section">
+        <div class="section__head">
+          <span class="eyebrow eyebrow--accent">Além de restaurantes</span>
+          <h2>A Kafé também desenvolve para outros negócios.</h2>
+          <p class="section__lead">Site, página no Google e sistemas sob medida para quem quer ser encontrado e atender melhor.</p>
+          <p class="price-tag">Landing page a partir de <strong>R$ 500</strong></p>
+        </div>
+        <div class="cards">
+          <article class="card card--dark">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/><rect x="3" y="3" width="18" height="18" rx="4"/></svg></div>
+            <h3>Clínicas e consultórios</h3>
+            <p>Site com especialidades, convênios, endereço e agendamento pelo WhatsApp.</p>
+            <a href="https://wa.me/5514981861140" data-wa="Oi Kaique, vi o site da Kafé. Tenho uma clínica e quero um site." class="card__link" target="_blank" rel="noopener">Quero para minha clínica →</a>
+          </article>
+          <article class="card card--dark">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L4 17l3 3 5.2-5.2a4 4 0 0 0 5.3-5.3l-2.5 2.5-2.5-.5-.5-2.5z"/></svg></div>
+            <h3>Oficinas</h3>
+            <p>Página com serviços, fotos e pedido de orçamento direto no seu WhatsApp.</p>
+            <a href="https://wa.me/5514981861140" data-wa="Oi Kaique, vi o site da Kafé. Tenho uma oficina e quero um site." class="card__link" target="_blank" rel="noopener">Quero para minha oficina →</a>
+          </article>
+          <article class="card card--dark">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div>
+            <h3>Imobiliárias</h3>
+            <p>Site com os imóveis, fotos, filtros e contato direto do interessado com o corretor.</p>
+            <a href="https://wa.me/5514981861140" data-wa="Oi Kaique, vi o site da Kafé. Tenho uma imobiliária e quero um site." class="card__link" target="_blank" rel="noopener">Quero para minha imobiliária →</a>
+          </article>
+          <article class="card card--dark">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5z"/></svg></div>
+            <h3>Outro negócio?</h3>
+            <p>Loja, salão, escritório ou serviço. Me conta o que você faz e a gente vê a melhor solução.</p>
+            <a href="https://wa.me/5514981861140" data-wa="Oi Kaique, vi o site da Kafé e quero um site para o meu negócio." class="card__link" target="_blank" rel="noopener">Me conta o seu →</a>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===================== DÚVIDAS ===================== -->
+    <section id="duvidas" class="container section">
+      <div class="section__head">
+        <span class="eyebrow">Dúvidas</span>
+        <h2>O que todo dono pergunta antes de começar.</h2>
+      </div>
+      <div class="faq">
+        <details class="faq__item">
+          <summary>Quanto custa?</summary>
+          <p>Landing page a partir de R$ 500. Delivery próprio e sistema de caixa dependem do tamanho da operação, e o orçamento sai já na primeira conversa, sem compromisso.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Em quanto tempo fica pronto?</summary>
+          <p>Depende do que você precisa. Na primeira conversa eu já te passo o prazo do seu projeto.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Preciso entender de tecnologia?</summary>
+          <p>Não. Eu configuro tudo e te mostro como usar. Você cuida do restaurante.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Já uso iFood. Preciso sair do aplicativo?</summary>
+          <p>Não precisa. Dá para manter o aplicativo e usar o pedido direto para quem já conhece o seu restaurante, que passa a comprar sem comissão.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Se der problema, quem me atende?</summary>
+          <p>Eu mesmo, pelo WhatsApp. A Kafé é de Ourinhos, então dá para resolver pessoalmente quando precisar.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Vocês atendem só restaurante?</summary>
+          <p>Não. Restaurante é o foco, mas a Kafé também faz sites e sistemas para clínicas, oficinas, imobiliárias e outros negócios. <a href="#outros-negocios">Veja aqui</a>.</p>
+        </details>
+      </div>
+    </section>
+
     <!-- ===================== CONTATO ===================== -->
-    <section class="container section">
-      <div id="contato" class="cta">
+    <section class="container section section--flush-top">
+      <div id="contato" class="cta" data-wa-hide>
         <div class="cta__text">
           <h2 class="cta__title">Vamos colocar a mesa do seu restaurante online?</h2>
-          <p>Conversa rápida, sem compromisso. [SEU TELEFONE]</p>
+          <p>Conversa rápida, sem compromisso. (14) 98186-1140</p>
         </div>
-        <a href="https://wa.me/55XXXXXXXXXXX" class="btn btn--accent" target="_blank" rel="noopener">Falar com o Kaique</a>
+        <a href="https://wa.me/5514981861140" data-wa="Oi Kaique, vim pelo site da Kafé e quero conversar sobre o meu restaurante." class="btn btn--accent" target="_blank" rel="noopener">Falar com o Kaique</a>
       </div>
     </section>
   </main>
@@ -268,6 +442,12 @@
       <span>Ourinhos - SP</span>
     </div>
   </footer>
+
+  <!-- Botão fixo do WhatsApp: some enquanto o topo ou o contato estão na tela -->
+  <a href="https://wa.me/5514981861140" data-wa="Oi Kaique, vim pelo site da Kafé." class="wa-float" data-wa-float target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5z"/><path d="M8 10h8"/></svg>
+    <span>WhatsApp</span>
+  </a>
 
   <script src="js/main.js" defer></script>
 </body>
